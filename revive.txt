@@ -1,0 +1,15 @@
+
+Doctor Login/registration
+Doctor Dashboard
+Private Jouranal
+
+client Login/registration
+client profile
+
+Admin Panel
+
+Appointment
+
+Blog
+
+Self Test(optional)
