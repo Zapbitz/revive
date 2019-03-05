@@ -1,98 +1,91 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+@section('content')
+<div class="card bg-dark text-white " style="margin-top:-1.5em;border-radius:0px !important">
+        <img class="card-img" src="https://images.unsplash.com/photo-1517303650219-83c8b1788c4c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd4c162d27ea317ff8c67255e955e3c8&auto=format&fit=crop&w=2691&q=80" alt="Card image">
+        <div class="card-img-overlay">
+          <h2 class="card-title">Get help. Get better.</h2>
+          <h4 class="card-text">No matter what's troubling you, get the support you need, right here, right now.</h4>
         </div>
-    </body>
-</html>
+</div>
+
+<div class="container">
+    <h2 class="text-center">Package</h2>
+    <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title">Online Live Chat</h4>
+                  <p class="category">Category subtitle</p>
+                </div>
+                <div class="card-body">
+                  The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
+                </div>
+                <div class="card-footer">
+                        <button type="button" class="btn btn-success">Chat Now</button>
+                </div>
+              </div>
+            </div>
+          
+            <div class="col-md-6">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Video Chat Sessions</h4>
+                      <p class="category">Category subtitle</p>
+                  </div>
+                  <div class="card-body">
+                        The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
+                  </div>
+                  <div class="card-footer">
+                        <button type="button" class="btn btn-success">Chat Now</button>
+                </div>
+              </div>
+            </div>
+          </div>       
+</div>
+
+<div class="container-fluid bg-light p-3">
+  <div class="container">
+  <h2 class="text-center">Our Fetures</h2>
+  <div class="row">
+  <div class="col-md">
+    <div class="info ">
+      <div class="icon icon-info">
+        <i class="material-icons">chat</i>
+      </div>
+      <h4 class="info-title ">Free Chat</h4>
+      <p >Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="info ">
+      <div class="icon icon-info">
+        <i class="material-icons">money</i>
+      </div>
+      <h4 class="info-title ">Cash Effficent</h4>
+      <p >Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="info ">
+      <div class="icon icon-info">
+        <i class="material-icons">watch</i>
+      </div>
+      <h4 class="info-title ">Save Time</h4>
+      <p >Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="info ">
+      <div class="icon icon-info">
+        <i class="material-icons">chat</i>
+      </div>
+      <h4 class="info-title ">Free Chat</h4>
+      <p >Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+@endsection
