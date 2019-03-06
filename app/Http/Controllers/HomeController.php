@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Role::create(['name' => 'client']);
+        // return view('home');
     }
+    public function admin_panel()
+    {
+        return view('admin.admin-panel');
+    }
+    // public function client_profile()
+    // {
+    //     return view('clients.client-profile');
+    // }
 }

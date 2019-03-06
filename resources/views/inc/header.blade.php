@@ -10,7 +10,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Counsellers</a>
+                <a class="nav-link" href="#">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Blog</a>
@@ -21,12 +21,27 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Programs</a>
               </li>
+              @if (Auth::check())
+              <li>
+                <a class="btn btn-outline-danger text-white" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+              </li> 
+              @else
               <li class="nav-item">
-                <a class="nav-link" href="/login">login</a>
+                <a class="btn btn-outline-secondary" href="/login">login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
+                <a class="btn btn-outline-secondary " href="/register">Register</a>
               </li>
+              @endif
+        
             </ul>
           </div>
         </div>

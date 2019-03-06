@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use Session;
+use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/client';
 
     /**
      * Create a new controller instance.
@@ -61,12 +64,20 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data )
     {
+        
+        // $user= new User();
+        // $user->name=$data['name'];
+        // $user->email=$data['email'];
+        // $user->password=Hash::make($data['password']);
+        // $user->roles()->attach(Role::where('name', 'client')->first());
+        // $user->save();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
     }
 }

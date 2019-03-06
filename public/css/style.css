@@ -1,0 +1,28 @@
+#red{ 
+    border-top: solid lightblue;
+    border-width: 15px;
+    background: #2E2E2E; 
+    /* position:absolute; 
+    bottom:0;  */
+    /* height:100%; */
+    width:100%; 
+    height:auto; 
+    
+  }
+  
+  .text {
+    color: lightgray;
+    font-family: Lato;
+    font-size: 2em;
+    text-align: center;
+    /* margin-top: 50px; */
+  }
+  
+  .text2 {
+    color: lightgray;
+    font-family: Lato;
+    font-size: 1em;
+    text-align: center;
+    /* margin-top: -50px */
+  }
+  

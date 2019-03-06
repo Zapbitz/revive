@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="card bg-dark text-white " style="margin-top:-1.5em;border-radius:0px !important">
-        <img class="card-img" src="https://images.unsplash.com/photo-1517303650219-83c8b1788c4c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd4c162d27ea317ff8c67255e955e3c8&auto=format&fit=crop&w=2691&q=80" alt="Card image">
+{{-- <div class="card bg-dark text-white " style="margin-top:-1.5em;border-radius:0px !important">
+<img class="card-img" src="{{asset('/images/slider2.jpg')}}" alt="Card image">
         <div class="card-img-overlay">
           <h2 class="card-title">Get help. Get better.</h2>
           <h4 class="card-text">No matter what's troubling you, get the support you need, right here, right now.</h4>
         </div>
-</div>
+</div> --}}
 
 <div class="container">
     <h2 class="text-center">Package</h2>
@@ -22,7 +22,7 @@
                   The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
                 </div>
                 <div class="card-footer">
-                        <button type="button" class="btn btn-success">Chat Now</button>
+                        <button type="button" class="btn btn-info">Chat Now</button>
                 </div>
               </div>
             </div>
@@ -87,4 +87,5 @@
 </div>
 </div>
 </div>
+
 @endsection

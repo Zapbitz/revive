@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
     <link href="{{asset('css/material-kit.css?v=2.0.5')}}" rel="stylesheet" />
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+
   </head>
   <body>
 
@@ -18,7 +20,7 @@
     <div class="container-fluied">
         @yield('content')
     </div>
-    {{-- @include('inc.footer') --}}
+    @include('inc.footer')
 
 
 
