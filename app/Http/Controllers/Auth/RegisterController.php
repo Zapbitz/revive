@@ -6,6 +6,7 @@ use Auth;
 use Session;
 use App\Role;
 use App\User;
+use App\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -73,11 +74,22 @@ class RegisterController extends Controller
         // $user->password=Hash::make($data['password']);
         // $user->roles()->attach(Role::where('name', 'client')->first());
         // $user->save();
+        Client::create([
+            'name'      => $data['name'],
+            'email'     => $data['email'],
+            'password'  => $data['password'],
+            'age'       =>$data['age'],
+            'gender'    =>$data['gender'],
+            'martial_status' =>$data['martial_status'],
+            'occupation'     =>$data['occupation'],
+        ]);
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+       
         
     }
 }

@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Doctor extends Model
 {
-    protected $fillable = [
-        'name', 'email', 'password','age','gender','occupation','martial_status',
-    ];
+    //
 
     public function users()
     {
