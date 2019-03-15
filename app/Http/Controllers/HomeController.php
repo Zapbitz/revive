@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
 use Illuminate\Http\Request;
 
 
@@ -13,10 +14,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -30,7 +31,8 @@ class HomeController extends Controller
     }
     public function admin_panel()
     {
-        return view('admin.admin-panel');
+        $bookings = Booking::all();
+        return view('admin.admin-panel',compact('bookings'));
     }
     // public function client_profile()
     // {

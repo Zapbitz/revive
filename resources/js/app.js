@@ -19,15 +19,78 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+import Chat from './components/Chat.vue';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+Vue.component('chat', Chat);
+
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        message: '',
+        chat:{
+                message:[]
+        },
+        typing: '',
+    },
+    watch:{
+        message(){
+            Echo.private('chat')
+            .whisper('typing', {
+                name: this.message
+            });
+        }
+    },
+    methods:{
+        send(reciver){
+            if(this.message.length != 0 )
+            {
+                this.chat.message.push(this.message);
+                // console.log(this.message);
+                axios.post('/send/'+reciver, {
+                    message: this.message
+                  })
+                  .then(response => {
+                    console.log(response);
+                    this.message = ''
+                  })
+                  .catch(error => {
+                    console.log(error);
+                  });
+            }
+        }
+    },
+    mounted(){
+        Echo.private('chat')
+        .listen('ChatEvent', (e) => {
+        console.log(e);
+        this.chat.message.push(e.message);
+
+    })
+    .listenForWhisper('typing', (e) => {
+        if(e.name != '')
+        {
+            // console.log('typing..');
+            this.typing = 'typing...';
+        }
+        else
+        {
+            // console.log('');
+            this.typing = '';
+
+        }
+    });
+    // Echo.join(`chat`)
+    // .here((users) => {
+    //     console.log(users);
+    // })
+    // .joining((user) => {
+    //     // console.log(user.name);
+    // })
+    // .leaving((user) => {
+    //     // console.log(user.name);
+    // });
+
+    }
 });

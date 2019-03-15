@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Doctor;
+use App\Booking;
+use App\DoctorCat;
+use App\ConsultDetail;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class DoctorController extends Controller
 {
+  
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,17 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $user=Doctor::all();
+        $bookings = Booking::where('doc_id',auth()->user()->id)->get();
+        // dd($bookings[0]->user_details);
+        return view('doctors.profile',compact('user','bookings'));
+    }
+
+    public function view_doctor()
+    {
+
+        $doctors=Doctor::all();
+        return view('doctors.view',compact('doctors')); 
     }
 
     /**
@@ -23,7 +42,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        $doc_cats=DoctorCat::all();
+        return view('doctors.create',compact('doc_cats'));
     }
 
     /**
@@ -34,7 +54,41 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $user = new User();
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+            $user->password = Hash::make($request['password']);
+            $user->save();
+
+            $user->assignRole('doctor');
+
+        // dd($user->assignRole('doctor'));
+
+        $request->merge([ 
+            'day' => implode(',', (array) $request->get('day'))
+        ]);
+
+        $con=new ConsultDetail();
+            $con->start_time = $request['start_time'];
+            $con->end_time = $request['end_time'];
+            $con->day = $request->input('day');
+        $con->save();
+
+        // dd($con->day);
+        Doctor::create([
+            'name'      =>  $request['name'],
+            'email'     =>  $request['email'],
+            'password'  =>  $request['password'],
+            'gender'    =>  $request['gender'],
+            'license'   =>  $request['license'],
+            'con_fee'   =>  $request['fee'],
+            'doc_cat'   =>  $request['doc_cat'],
+            'cons_id'   =>  $con->id,
+        ]);
+        
+       return redirect('/doctor');
+       
+        
     }
 
     /**

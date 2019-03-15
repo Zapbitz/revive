@@ -2,15 +2,17 @@
 
 namespace App;
 
+use App\Role;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles;
+    use Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -31,25 +33,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    
+    Protected $guard_name ='api';
 
-    
-    /**
-    * @param string|array $roles
-    */
-    
-
-
-    /**
-    * Check multiple roles
-    * @param array $roles
-    */
-
-
-    /**
-    * Check one role
-    * @param string $role
-    */
-
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    } 
 
 }

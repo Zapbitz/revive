@@ -44,7 +44,7 @@
       {{-- Profile template --}}
        <div class="container mt-5">
         <form class="bg-white p-5" method="POST" action="/client/{{$user->id}}">
-            <h2 class="text-center">UPADTE PROFILE</h2>
+            <h2 class="text-center">UPDATE PROFILE</h2>
             @csrf
             @method('PATCH')
             <div class="form-group">

@@ -45,13 +45,23 @@
        <div class="container mt-5">
 
            <div class="row">
+              <div class="col-md-12">
+                  <div class="card card-nav-tabs">
+                      <h4 class="card-header card-header-warning">APPOINMENT</h4>
+                      <div class="card-body">
+                        <h4 class="card-title">BOOK YOUR APPOINMENT</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#0" class="btn btn-warning">Book Now</a>
+                      </div>
+                    </div>
+                 </div>
                <div class="col-md-12">
                 <div class="card card-nav-tabs">
                     <h4 class="card-header card-header-info">LIVE CHAT</h4>
                     <div class="card-body">
                       <h4 class="card-title">CHAT WITH DOCTOR</h4>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#0" class="btn btn-info">Chat Now</a>
+                      <a href="/chats" class="btn btn-info">Chat Now</a>
                     </div>
                   </div>
                </div>
@@ -65,16 +75,7 @@
                     </div>
                   </div>
                </div>
-               <div class="col-md-12">
-                <div class="card card-nav-tabs">
-                    <h4 class="card-header card-header-warning">APPOINMENT</h4>
-                    <div class="card-body">
-                      <h4 class="card-title">BOOK YOUR APPOINMENT</h4>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#0" class="btn btn-warning">Book Now</a>
-                    </div>
-                  </div>
-               </div>
+               
            </div>
        </div>
     </div>

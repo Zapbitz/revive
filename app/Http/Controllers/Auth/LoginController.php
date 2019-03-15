@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -25,8 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
+   
     protected $redirectTo = '/client';
-
     /**
      * Create a new controller instance.
      *
@@ -36,4 +38,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // protected function sendFailedLoginResponse(Request $request)
+    // {
+    //     session()->flash('failed','Success');
+    //     return redirect('login');
+    // }
+
+    protected function sendLoginResponse(Request $request)
+    {
+        if(Auth::user()->hasRole('client')){
+
+            return redirect('/client');
+
+        }
+        else if(Auth::user()->hasRole('doctor')){
+
+            return redirect('/doctor');
+        }
+    }   
 }

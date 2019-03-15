@@ -19,9 +19,11 @@ class CreateDoctorsTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('gender');
-            $table->integer('doc_cat');
-            $table->integer('cons_id');
-            $table->integer('online_id');       
+            $table->string('license');
+            $table->unsignedinteger('con_fee');
+            $table->integer('doc_cat')->references('id')->on('doctor_cats');
+            $table->integer('cons_id')->references('id')->on('consult_details');
+            // $table->integer('online_id');       
             $table->boolean('isVarified')->default(0);     
             $table->timestamps();
         });
