@@ -58,8 +58,6 @@ class BookingController extends Controller
 
         }
 
-        dd($booking);
-
         Booking::create([
             'doc_id'    =>   $request['doctor_id'],
             'client_id' =>   $client_id,
