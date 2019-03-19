@@ -13,7 +13,7 @@
     <link href="{{asset('css/material-dashboard.css?v=2.1.1')}}" rel="stylesheet" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" />
     {{-- <link rel="stylesheet" href="{{asset('demo/demo.css')}}"> --}}
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
 

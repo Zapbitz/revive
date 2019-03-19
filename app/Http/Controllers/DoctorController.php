@@ -9,12 +9,19 @@ use App\DoctorCat;
 use App\ConsultDetail;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Redirect;
+// use Illuminate\Auth\Middleware\AdminMiddleware;
 
 class DoctorController extends Controller
 {
-  
+    // public function __construct()
+    // {
+    //     $this->middleware(AdminMiddleware::class);
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +29,11 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $user=Doctor::all();
-        $bookings = Booking::where('doc_id',auth()->user()->id)->get();
-        // dd($bookings[0]->user_details);
-        return view('doctors.profile',compact('user','bookings'));
+        // $user=Doctor::all();
+        // dd(Auth::user()->name);
+        $doctor=Doctor::where('email',auth()->user()->email)->first();
+        // dd($doctor);
+        return view('doctors.profile',compact('doctor'));
     }
 
     public function view_doctor()
@@ -33,6 +41,14 @@ class DoctorController extends Controller
 
         $doctors=Doctor::all();
         return view('doctors.view',compact('doctors')); 
+    }
+
+
+    public function view_booking()
+    {
+        $doc_id=Doctor::where('email',auth()->user()->email)->first()->id;
+        $bookings = Booking::where('doc_id',$doc_id)->get();
+        return view('doctors.booking',compact('bookings')); 
     }
 
     /**
@@ -110,7 +126,11 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user_email = User::findOrFail($id)->email;
+        $doctor = Doctor::where('email',$user_email)->first();
+        // dd($doctor);
+        $doctor_cats = DoctorCat::all();
+        return view('doctors.edit',compact('doctor','doctor_cats'));
     }
 
     /**
@@ -122,7 +142,22 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $doctor=Doctor::findOrFail($id);
+
+        $user=User::where('email',$doctor->email)->first();
+        $user->name=$request['name'];
+        $user->email=$request['email'];
+        $user->password=bcrypt($request['password']);
+        $user->save();
+
+        $doctor->name=$request['name'];
+        $doctor->email=$request['email'];
+        $doctor->password=$request['password'];
+        $doctor->con_fee=$request['fee'];
+        $doctor->doc_cat=$request['doc_cat'];
+        $doctor->save();
+        
+        return redirect('/doctor');
     }
 
     /**

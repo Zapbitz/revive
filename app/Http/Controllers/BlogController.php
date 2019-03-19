@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -15,7 +17,21 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::all();
+        // dd($blogs[3]->WrittenBy);
         return view('blog.view',compact('blogs'));
+    }
+    public function blog_table($id)
+    {
+        if(auth()->user()->hasrole('doctor'))
+        {
+            $blogs = Blog::where('filled_by',$id)->get();
+        }
+        else
+        {
+            $blogs = Blog::all();
+        }
+        // dd($blogs);
+        return view('blog.blog-table',compact('blogs'));
     }
 
     /**
@@ -36,7 +52,34 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if(!$request->title || !$request->body){
+
+            return back()->withInput();
+        }
+       
+        if($request->hasfile('image'))
+         {   
+                $image=$request->file('image');
+                $extention= $image->getClientOriginalExtension();;
+                $name=Str::slug($request->title).'.'.$extention;
+                $image->move(public_path().'/blogimages/', $name);  
+                $data[] = $name;  
+         }
+
+        $blog = new Blog;
+
+        $blog->title=$request->title;
+
+        $blog->article=$request->body;
+
+        $blog->filled_by=Auth::User()->id;
+
+        $blog->image=$name;
+
+        $blog->save();
+
+        return redirect('blogs');
+
     }
 
     /**
@@ -59,7 +102,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        return view('blog.edit',compact('blog'));
     }
 
     /**
@@ -71,7 +115,21 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+
+        if(Auth::User()->id != $blog->filled_by){
+
+            return back();
+        }
+        $blog->title=$request->title;
+
+        $blog->article=$request->body;
+
+        $blog->filled_by=Auth::User()->id;
+
+        $blog->save();
+        
+        return redirect('blogs');
     }
 
     /**
@@ -82,6 +140,13 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        if(Auth::User()->id != $blog->filled_by){
+
+            return back();
+        }
+        $blog->delete();
+
+        return redirect('blogs');
     }
 }

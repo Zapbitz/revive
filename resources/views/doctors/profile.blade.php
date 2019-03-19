@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="wrapper ">
-    <div class="sidebar" data-color="azure" >
+    {{-- <div class="sidebar" data-color="azure" >
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -39,52 +39,24 @@
           
         </ul>
       </div>
-    </div>
+    </div> --}} @include('inc.doctor-nav')
     <div class="main-panel">
-      {{-- Profile template --}}
-       <div class="container mt-5">
-          <h2 class="text-center">Appoinment list</h2>
-           <div class="row">
-             @include('booking.booking-table')
-             {{-- <div class="container">
-              <table class="table">
-                <thead class="bg-info text-white">
-                  <tr>
-                    <th>Booking ID</th>
-                    <th>Client Name</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white">
-                  @foreach ($bookings as $booking)
-                  <tr>
-                    <td>{{$booking->id}}</td>
-                    <td>{{$booking->user_details->name}}</td>
-                    <td>{{$booking->date}}</td>
-                    <td>{{$booking->time}}</td>
-                    @if(!$booking->isAccept)
-                    <td>
-                        <form action="/booking/accept/{{$booking->id}}">
-                         <button type="submit" class="btn btn-success btn-sm">Accept</button>
-                       </form>   
-                    </td> 
-                    @else
-                    <td>
-                        <span class="badge badge-success">Approved</span>
-                    </td>
-                    @endif
-                   
-                  </tr>
-                  @endforeach
-
-                </tbody>
-              </table>  
-            </div> --}}
-           </div>
-       </div>
+    <div class="container">
+        <div class="card card-nav-tabs text-center mt-5">
+            <div class="card-header card-header-info">
+             {{$doctor->name}}
+            </div>
+            <div class="card-body text-left mx-auto" style="width:350px">
+              <h4 class="card-title my-2"><b>Email : </b>{{$doctor->email}}</h4>
+              <h4 class="card-title my-2"><b>Gender : </b>{{$doctor->gender}}</h4> 
+              <h4 class="card-title my-2"><b>License No. : </b>{{$doctor->license}}</h4> 
+              <h4 class="card-title my-2"><b>Fee : </b>Rs.{{$doctor->con_fee}}</h4> 
+              <h4 class="card-title my-2"><b>Specialization : </b>{{$doctor->doctorTypes->name}}</h4>  
+              <h4 class="card-title my-2"><b>Consulting Days : </b>{{$doctor->consult->day}}</h4> 
+              <h4 class="card-title my-2"><b>Consulting Start Time : </b>{{$doctor->consult->start_time}}</h4>   
+              <h4 class="card-title my-2"><b>Consulting End Time : </b>{{$doctor->consult->end_time}}</h4> 
+            </div>
+          </div>
     </div>
-  </div>
-  
+    </div>
 @endsection

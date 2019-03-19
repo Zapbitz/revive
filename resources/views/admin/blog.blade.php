@@ -82,8 +82,15 @@
                                 <td>{{$blog->title}}</td>                        
                                 <td>
                                     <a href="/blog/{{$blog->id}}"><i class="fa fa-eye"></i> <small>View</small></a><br>
-                                    <a href=""><i class="fa fa-edit"></i> <small>Edit</small></a><br>
-                                    <form action="{{$blog->id}}">
+                                    <form action="{{$blog->id}} method="POST">
+                                        @method('PUT')
+                                        @csrf
+                                        <a href=""><i class="fa fa-edit"></i> <small>Edit</small></a><br>
+                                    </form>  
+                                    <!--<a href=""><i class="fa fa-edit"></i> <small>Edit</small></a><br>-->
+                                    <form action="{{$blog->id}} method="POST">
+                                        @method('DELETE')
+                                        @csrf
                                     <a href=""><i class="fa fa-trash"></i> <small>Delete</small> </a>
                                     </form>   
                                 </td> 

@@ -34,6 +34,7 @@
         </div>
         </div>
     </div>
+    <h3 class="text-center"><i class="fa fa-write"></i> <a href="/prescription/{{$user->id}}" class="btn btn-info ">Write Priscription</a></h3>
         <h3 class="text-center"><i class="fa fa-arrow-left"></i> <a href="{{ url('/chats') }}" class="text-dark">Go Back</a></h3>
 </div>
 

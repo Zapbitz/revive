@@ -22,7 +22,7 @@
                   The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
                 </div>
                 <div class="card-footer">
-                        <button type="button" class="btn btn-info">Chat Now</button>
+                        <a href="/chats" class="btn btn-info">Chat Now</a>
                 </div>
               </div>
             </div>
@@ -30,14 +30,14 @@
             <div class="col-md-6">
               <div class="card">
                   <div class="card-header card-header-success">
-                      <h4 class="card-title">Video Chat Sessions</h4>
+                      <h4 class="card-title">Appointment</h4>
                       <p class="category">Category subtitle</p>
                   </div>
                   <div class="card-body">
                         The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
                   </div>
                   <div class="card-footer">
-                        <button type="button" class="btn btn-success">Chat Now</button>
+                      <a href="/doctors/all"  class="btn btn-success">Book Now</a>
                 </div>
               </div>
             </div>

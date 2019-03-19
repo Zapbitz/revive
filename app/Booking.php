@@ -12,6 +12,6 @@ class Booking extends Model
     ];
     public function user_details()
     {
-        return $this->belongsTo(Client::class,'doc_id');
+        return $this->belongsTo(Client::class,'client_id');
     } 
 }

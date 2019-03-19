@@ -15,6 +15,7 @@
     <!-- Material Kit CSS -->
     <link href="{{asset('css/material-kit.css?v=2.0.5')}}" rel="stylesheet" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
 
@@ -26,14 +27,12 @@
 
 
 
+
 <!--   Core JS Files   -->
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'article-ckeditor' );
 </script>
-
-
-
 <script src="{{ asset('js/core/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{asset('js/core/popper.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
@@ -47,5 +46,7 @@
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('js/material-kit.js?v=2.0.5')}}" type="text/javascript"></script></body>
+<script src="{{asset('js/material-kit.js?v=2.0.5')}}" type="text/javascript"></script>
+
+</body>
 </html>

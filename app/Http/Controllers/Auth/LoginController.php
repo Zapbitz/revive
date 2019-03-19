@@ -56,5 +56,9 @@ class LoginController extends Controller
 
             return redirect('/doctor');
         }
+        else if(Auth::user()->hasRole('admin')){
+
+            return redirect('/admin-panel');
+        }
     }   
 }

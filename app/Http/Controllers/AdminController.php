@@ -50,4 +50,16 @@ class AdminController extends Controller
         $clients = Client::all();
         return view('admin.client',compact('clients'));
     }
+    public function show_doctor($id)
+    {
+
+        $doctor=Doctor::findOrFail($id);
+        return view('admin.view-doctor',compact('doctor')); 
+    }
+    public function edit_doctor($id)
+    {
+
+        $doctor=Doctor::findOrFail($id);
+        return view('admin.edit-doctor',compact('doctor')); 
+    }
 }

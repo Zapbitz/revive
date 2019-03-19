@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Doctor;
 use App\Booking;
+use App\Mail\BookingMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -47,6 +49,17 @@ class BookingController extends Controller
         // dd(Client::where('email',auth()->user()->email)->first()->id);
         // dd($request['date']);
         $client_id=Client::where('email',auth()->user()->email)->first()->id;
+
+        $booking = Booking::where([['date',$request['date']],['time',$request['time']]])->first();
+
+        if($booking){
+
+            return back()->with('error','already booked');
+
+        }
+
+        dd($booking);
+
         Booking::create([
             'doc_id'    =>   $request['doctor_id'],
             'client_id' =>   $client_id,
@@ -126,9 +139,27 @@ class BookingController extends Controller
     public function book_accept($id)
     {
         $booking = Booking::findOrFail($id);
+        $client=Client::findOrFail($booking->client_id);
         $booking->isAccept = true;
         $booking->save();
-        // dd($booking);
+        $mail=$this->sendMail($client,$booking,"accept");
         return redirect('doctor');
+    }
+    public function book_reject($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $client=Client::findOrFail($booking->client_id);
+        $booking->isReject = true;
+        $booking->save();
+        $mail=$this->sendMail($client,$booking,"reject");
+        return redirect('doctor');
+    }
+
+    public function sendMail($client,$booking,$type)
+    {
+
+        $doctor = Doctor::where('email',auth()->user()->email)->first();
+        Mail::to($client->email)->send(new BookingMail($client,$doctor,$booking,$type));
+
     }
 }

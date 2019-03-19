@@ -4,7 +4,7 @@
 
 <div class="container">
     
-<form class="bg-white p-5" action="/blog" method="POST">
+<form class="bg-white p-5" action="{{url('/blogs')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <h3 class="text-center">Write an Article</h3>
     <div class="form-group">
@@ -13,8 +13,9 @@
     </div> 
     <div class="form-group">
             <label for="article-ckeditor">Article</label>
-            <textarea class="form-control" id="article-ckeditor" rows="3"></textarea>
+            <textarea class="form-control" id="article-ckeditor" rows="3" name="body"></textarea>
     </div>
+    <input type="file" name="image">
     <button type="submit" class="btn btn-info btn-block">Publish</button>
 </form>
 

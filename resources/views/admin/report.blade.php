@@ -73,12 +73,12 @@
                             <div class="form-group">
                                     <select class="form-control selectpicker" data-style="btn btn-link" id="doctor">
                                      @foreach ($doctors as $doctor)
-                                        <option value="">{{$doctor->name}}</option>
+                                        <option value="{{$doctor->id}}">{{$doctor->name}}</option>
                                      @endforeach
                                     </select>
                                   </div>
                             <p class="card-text">All Booking details of a particular doctor of this month will be generated</p>
-                            <a href="#0" class="btn btn-success"><i class="fa fa-download"></i> Download</a>
+                            <a href="/report/doctor-booking/{{$doctors[0]->id}}" class="btn btn-success" id="doctor_link"><i class="fa fa-download"></i> Download</a>
                         </div>
                     </div>
                 </div>
@@ -105,5 +105,15 @@
        </div>
     </div>
   </div>
-  
+  <script>
+  $('document').ready(function(){
+    
+    $('#doctor').change(function(){
+        var id = $(this).val();
+        // alert(id);
+        $('a#doctor_link').attr('href','/report/doctor-booking/'+id);
+    });
+  });
+  </script>
+ 
 @endsection

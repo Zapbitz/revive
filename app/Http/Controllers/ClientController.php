@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Client;
+use App\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -23,7 +24,11 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('clients.client-profile');
+        $client_id = Client::where('email',Auth::user()->email)->first()->id;
+        $bookings = Booking::where('client_id',$client_id)
+                            ->get();
+        // dd($bookings);
+        return view('clients.client-profile',compact('bookings'));
     }
 
     /**
@@ -83,7 +88,7 @@ class ClientController extends Controller
         $user=User::where('email',$client->email)->first();
         $user->name=$request['name'];
         $user->email=$request['email'];
-        $user->password=$request['password'];
+        $user->password=bcrypt($request['password']);
         $user->save();
 
 
