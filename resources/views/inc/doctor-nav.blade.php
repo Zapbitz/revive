@@ -30,9 +30,9 @@
        </a>
      </li>
          <li class="nav-item ">
-          <a class="nav-link" href="/blogs/create">
-             <i class="material-icons">create</i>
-             <p>Write Blog</p>
+          <a class="nav-link" href="/medical/history/{{Auth::user()->id}}">
+             <i class="material-icons">list</i>
+             <p>Medical History</p>
          </a>
        </li>
        <li class="nav-item ">

@@ -6,7 +6,9 @@
           <th>Client Name</th>
           <th>Date</th>
           <th>Time</th>
+          @role('doctor')
           <th>Action</th>
+          @endrole
         </tr>
       </thead>
       <tbody class="bg-white">

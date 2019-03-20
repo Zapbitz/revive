@@ -31,6 +31,11 @@
                   <a class="nav-link" href="/doctor">Profile</a>
               </li> 
               @endrole
+              @role('admin')
+              <li class="nav-item">
+                  <a class="nav-link" href="/admin-panel">Profile</a>
+              </li> 
+              @endrole
               {{-- @role('client')
               <li class="nav-item">
                   <a class="nav-link" href="/client">Profile</a>

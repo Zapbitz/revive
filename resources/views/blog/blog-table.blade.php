@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+  <a href="/blogs/create" class="btn btn-success btn-block">Write a Blog</a>
     <table class="table">
       <thead class="bg-info text-white">
         <tr>

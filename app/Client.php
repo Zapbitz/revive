@@ -10,8 +10,8 @@ class Client extends Model
         'name', 'email', 'password','age','gender','occupation','martial_status',
     ];
 
-    public function users()
+    public function usersDetails()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'email');
     }
 }

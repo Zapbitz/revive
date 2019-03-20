@@ -11,12 +11,16 @@
     <div class="row">
         <div class="col-md-10 offset-1">
             <div class="card card-nav-tabs p-5">
-                <h4 class="card-header card-header-info text-center">{{$user->name}}</h4>
+                <h4 class="card-header card-header-info text-center">{{auth()->user()->name}}</h4>
                 {{-- <input type="hidden" name="reciver_id" value={{$user->id}}> --}}
                 <div id="app">
                     <div class="card-body">
                         @foreach ($chats as $chat)
-                             <span class="shadow border py-1 px-3">{{$chat->message}}</span>  <br><br>                          
+                        @if($chat->sender_id == auth()->user()->id)
+                             <span class="shadow border py-1 px-3 pull-right bg-info text-white">{{$chat->message}}</span>  <br><br> 
+                        @else
+                            <span class="shadow border py-1 px-3 pull-left bg-secondary">{{$chat->message}}</span>  <br><br> 
+                        @endif
                         @endforeach
                         <chat v-for="value in chat.message" :key=value.index> 
                             @{{value}}

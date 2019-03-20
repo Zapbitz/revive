@@ -81,17 +81,18 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{$blog->title}}</td>                        
                                 <td>
-                                    <a href="/blog/{{$blog->id}}"><i class="fa fa-eye"></i> <small>View</small></a><br>
-                                    <form action="{{$blog->id}} method="POST">
+                                    <a href="/blogs/{{$blog->id}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> <small>View</small></a><br>
+                                    {{-- <form action="/blogs/{{$blog->id}} method="POST">
                                         @method('PUT')
                                         @csrf
                                         <a href=""><i class="fa fa-edit"></i> <small>Edit</small></a><br>
-                                    </form>  
-                                    <!--<a href=""><i class="fa fa-edit"></i> <small>Edit</small></a><br>-->
-                                    <form action="{{$blog->id}} method="POST">
-                                        @method('DELETE')
+                                    </form>   --}}
+                                    <a href="/blogs/{{$blog->id}}/edit" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> <small>Edit</small></a>
+                                   
+                                    <form action="/blogs/{{$blog->id}}" method="POST">
                                         @csrf
-                                    <a href=""><i class="fa fa-trash"></i> <small>Delete</small> </a>
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> <small>Delete</small></button>
                                     </form>   
                                 </td> 
                                 </tr>  

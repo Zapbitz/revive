@@ -62,6 +62,7 @@
       {{-- Profile template --}}
        <div class="container mt-5">
           <h2 class="text-center">List of Doctors</h2>
+          <a href="/doctor/create" class="btn btn-success btn-block">Add New Doctor</a>
            <div class="row">
             
               <div class="container">

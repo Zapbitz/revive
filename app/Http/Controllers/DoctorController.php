@@ -32,7 +32,7 @@ class DoctorController extends Controller
         // $user=Doctor::all();
         // dd(Auth::user()->name);
         $doctor=Doctor::where('email',auth()->user()->email)->first();
-        // dd($doctor);
+        // dd($doctor->doctorTypes);
         return view('doctors.profile',compact('doctor'));
     }
 
@@ -102,7 +102,7 @@ class DoctorController extends Controller
             'cons_id'   =>  $con->id,
         ]);
         
-       return redirect('/doctor');
+       return redirect('/admin-panel/doctor');
        
         
     }

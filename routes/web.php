@@ -60,10 +60,16 @@ Route::get('/admin-panel/edit/{id}','AdminController@edit_doctor');
 
 //reports route
 Route::get('/report/doctor-booking/{id}','ReportController@doctor_booking');
+Route::get('/report/patient-booking/{id}','ReportController@patient_booking');
+Route::get('/report/disease/{id}','ReportController@disease');
+
 
 
 Route::resource('prescription','PrescriptionController');
 Route::get('/prescriptions/pdf/{id}','PrescriptionController@pdf');
+
+Route::get('/medical/history/{id}','PrescriptionController@history');
+Route::get('/history/{id}','PrescriptionController@show_history');
 
 
 Route::get('/payment', function () {

@@ -141,10 +141,10 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $blog = Blog::findOrFail($id);
-        if(Auth::User()->id != $blog->filled_by){
+        // if(Auth::User()->id != $blog->filled_by){
 
-            return back();
-        }
+        //     return back();
+        // }
         $blog->delete();
 
         return redirect('blogs');

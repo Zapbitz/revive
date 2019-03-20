@@ -6,6 +6,7 @@ use PDF;
 use auth;
 use App\Client;
 use App\Doctor;
+use App\Booking;
 use App\Disease;
 use App\Medicine;
 use App\Prescription;
@@ -147,5 +148,40 @@ class PrescriptionController extends Controller
         // dd($prescription);
         $pdf = PDF::loadView('prescription.pdf',compact('prescription','medicines'));
         return $pdf->stream(uniqid().'_form_q.pdf');
+    }
+
+    public function history($id)
+    {
+        $roleClient=Auth::user()->hasRole('client');
+        $roleDoctor=Auth::user()->hasRole('doctor');
+        if($roleClient)
+        {
+            $client_id = Client::where('email',auth()->user()->email)->first()->id;
+            $prescriptions = Prescription::where('client_id',$client_id)->get();
+            // $bookings = Booking::where('client_id',$client_id)
+            //                     ->where('isAccept',true)
+            //                     ->get();
+
+            // dd($bookings);
+        }
+        else if($roleDoctor)
+        {
+            $doctor_id = Doctor::where('email',auth()->user()->email)->first()->id;
+            $prescriptions = Prescription::where('doctor_id',$doctor_id)->get(); 
+            // $bookings = Booking::where('doc_id',$doctor_id)
+            //                         ->where('isAccept',true)
+            //                         ->get();  
+        }
+        else
+        {
+            $prescriptions = Prescription::all();
+        }
+        return view('prescription.history',compact('prescriptions'));
+    }
+
+    public function show_history($id)
+    {
+        $prescription = Prescription::findOrFail($id);
+        return view('prescription.show-history',compact('prescription'));
     }
 }

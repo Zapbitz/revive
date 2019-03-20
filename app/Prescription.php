@@ -18,4 +18,8 @@ class Prescription extends Model
     {
         return $this->belongsTo('App\Doctor','doctor_id');
     }
+    public function medicineDetails()
+    {
+        return $this->hasMany('App\medicine','prescription_id');
+    }
 }

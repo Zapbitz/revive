@@ -24,29 +24,52 @@ class ChatController extends Controller
     public function index()
     {
         $role = auth()->user()->hasrole('client');
+        $users=User::all();
+        // dd();
         if($role)
-            $users=Doctor::all();
-        else
-            $users=Client::all();
-       return view('chat.view',compact('users'));
+        {
+            $client = Client::where('email',auth()->user()->email)->first(); 
+
+            if(!$client->premium)
+            {
+                return view('payment.chat'); 
+            }
+        }
+
+        foreach ($users as $user) {
+            if($user->hasrole('client'))
+            {
+               
+               $user->role="client"; 
+            }
+        else if($user->hasrole('doctor'))
+        {
+            $user->role="doctor";
+        }
+        // dd($user);     
+        }
+        
+        // dd($users->usersDetails);
+        return view('chat.view',compact('users'));
     }
 
     public function show($id)
     {
-        $role = auth()->user()->hasrole('client');
-        if($role)
-        {
-            $user = Doctor::findOrFail($id);
-        }
-        else
-        {
-            $user = Client::findOrFail($id);
-        }
+        // $role = auth()->user()->hasrole('client');
+        // if($role)
+        // {
+        //     $user = Doctor::findOrFail($id);
+        // }
+        // else
+        // {
+        //     $user = Client::findOrFail($id);
+
+        // }
+        $user = User::findOrFail($id);
         $chats = Chat::where('sender_id',$user->id)
                         ->orWhere('reciver_id',$user->id)
                         ->get();
 
-        // dd($chats);
         return view('chat.show',compact('user','chats'));
     }
 

@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
 <div class="container">
+  {{-- <a href="/prescription/create" class="btn btn-block btn-success">Write Prescription</a> --}}
         <table class="table">
           <thead class="bg-info text-white">
             <tr>

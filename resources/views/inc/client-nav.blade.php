@@ -18,19 +18,19 @@
         <li class="nav-item ">
             <a class="nav-link" href="/prescription">
                 <i class="material-icons">list</i>
-                <p>Prescription</p>
-            </a>
-        </li>
-       <li class="nav-item ">
-            <a class="nav-link" href="/client/{{Auth::user()->id}}/edit">
-                <i class="material-icons">M</i>
-                <p>Medical Record</p>
+                <p>Prescriptions</p>
             </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="/prescription">
-                <i class="material-icons">list</i>
-                <p>Prescription</p>
+            <a class="nav-link" href="/medical/history/{{Auth::user()->id}}">
+               <i class="material-icons">list</i>
+               <p>Medical History</p>
+           </a>
+         </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="/">
+                <i class="material-icons">home</i>
+                <p>Home</p>
             </a>
         </li>
        <li class="nav-item ">

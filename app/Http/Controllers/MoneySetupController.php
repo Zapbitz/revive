@@ -25,7 +25,6 @@ class MoneySetupController extends Controller
 			$fee=100;
 		else if($type == "yearly")
 			$fee=899;
-
 		 return view('payment.stripe',compact('fee'));
 		 
 	 }
@@ -34,9 +33,9 @@ class MoneySetupController extends Controller
 
 		if($fee){
 
-			$client=Client::where('email',auth()->user()->email)->first();
+			$client= Client::where('email',auth()->user()->email)->first();
 
-			$client->premium = 1;
+			$client->premium = true;
 
 			$client->save();
 

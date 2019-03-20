@@ -13,9 +13,9 @@ class Doctor extends Model
     protected $fillable = [
         'name', 'email', 'password','gender','license','con_fee','doc_cat',	'cons_id',
     ];
-    public function users()
+    public function usersDetails()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class,'email');
     }
 
     public function consult()
@@ -24,6 +24,6 @@ class Doctor extends Model
     }
     public function doctorTypes()
     {
-        return $this->belongsTo('App\DoctorCat','id');
+        return $this->belongsTo('App\DoctorCat','doc_cat');
     }
 }

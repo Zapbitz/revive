@@ -90,14 +90,34 @@
                             <div class="card-body">
                                 <h4 class="card-title">Select a Client</h4>
                                 <div class="form-group">
-                                        <select class="form-control selectpicker" data-style="btn btn-link" id="doctor">
+                                        <select class="form-control selectpicker" data-style="btn btn-link" id="client">
                                          @foreach ($clients as $client)
-                                            <option value="">{{$client->name}}</option>
+                                            <option value="{{$client->id}}">{{$client->name}}</option>
                                          @endforeach
                                         </select>
                                       </div>
                                 <p class="card-text">All Booking details of a particular patient of this month will be generated</p>
-                                <a href="#0" class="btn btn-success"><i class="fa fa-download"></i> Download</a>
+                                <a href="/report/patient-booking/{{$clients[0]->id}}" class="btn btn-success" id="client_link"><i class="fa fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card card-nav-tabs text-center">
+                            <div class="card-header card-header-info">
+                                Disease Survey
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Select a Disease</h4>
+                                <div class="form-group">
+                                        <select class="form-control selectpicker" data-style="btn btn-link" id="disease">
+                                         @foreach ($diseases as $disease )
+                                            <option value="{{$disease->id}}">{{$disease->name}}</option>
+                                         @endforeach
+                                        </select>
+                                      </div>
+                                <p class="card-text">All Booking details of a particular patient of this month will be generated</p>
+                                <a href="/report/disease/{{$diseases[0]->id}}" class="btn btn-success" id="disease_link"><i class="fa fa-download"></i> Download</a>
                             </div>
                         </div>
                     </div>
@@ -112,6 +132,18 @@
         var id = $(this).val();
         // alert(id);
         $('a#doctor_link').attr('href','/report/doctor-booking/'+id);
+    });
+
+    $('#client').change(function(){
+        var id = $(this).val();
+        // alert(id);
+        $('a#client_link').attr('href','/report/patient-booking/'+id);
+    });
+
+    $('#disease').change(function(){
+        var id = $(this).val();
+        // alert(id);
+        $('a#disease_link').attr('href','/report/disease/'+id);
     });
   });
   </script>

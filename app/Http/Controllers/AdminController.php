@@ -6,6 +6,7 @@ use App\Blog;
 use App\Client;
 use App\Doctor;
 use App\Booking;
+use App\Disease;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -38,7 +39,8 @@ class AdminController extends Controller
     {
         $doctors = Doctor::all();
         $clients = Client::all();
-        return view('admin.report',compact('doctors','clients'));
+        $diseases = Disease::all();
+        return view('admin.report',compact('doctors','clients','diseases'));
     }
     public function blog()
     {
