@@ -15,9 +15,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="/doctors/all">Doctors</a>
               </li>
+              @role('doctor')
               <li class="nav-item">
                 <a class="nav-link" href="/chats">Chat</a>
               </li>
+              @endrole
+              @role('client')
+              <li class="nav-item">
+                <a class="nav-link" href="/chats">Chat</a>
+              </li>
+              @endrole
               <li class="nav-item">
                 <a class="nav-link" href="/blogs">Blog</a>
               </li>

@@ -19,9 +19,11 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+import Vue from 'vue'
+import VueChatScroll from 'vue-chat-scroll'
 import Chat from './components/Chat.vue';
 
-
+Vue.use(VueChatScroll)
 Vue.component('chat', Chat);
 
 

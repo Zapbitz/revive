@@ -48,14 +48,13 @@ class BookingController extends Controller
     {
         // dd(Client::where('email',auth()->user()->email)->first()->id);
         // dd($request['date']);
+
         $client_id=Client::where('email',auth()->user()->email)->first()->id;
 
         $booking = Booking::where([['date',$request['date']],['time',$request['time']]])->first();
 
         if($booking){
-
-            return back()->with('error','already booked');
-
+            return back()->with('error','Already Booked.Kindly select another date or time!');
         }
 
         Booking::create([
@@ -64,7 +63,10 @@ class BookingController extends Controller
             'date'      =>   $request['date'],
             'time'      =>   $request['time'],
         ]);
-        return redirect('/client');
+        
+        return redirect('payment/stripe/'.$request->doctor_fee);
+
+        // return redirect('/client')->with('success',"Your Booking is sussessfully completed");
     }
 
     /**

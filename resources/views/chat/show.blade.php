@@ -13,8 +13,8 @@
             <div class="card card-nav-tabs p-5">
                 <h4 class="card-header card-header-info text-center">{{auth()->user()->name}}</h4>
                 {{-- <input type="hidden" name="reciver_id" value={{$user->id}}> --}}
-                <div id="app">
-                    <div class="card-body">
+                <div id="app" v-chat-scroll>
+                    <div class="card-body" >
                         @foreach ($chats as $chat)
                         @if($chat->sender_id == auth()->user()->id)
                              <span class="shadow border py-1 px-3 pull-right bg-info text-white">{{$chat->message}}</span>  <br><br> 
@@ -22,7 +22,7 @@
                             <span class="shadow border py-1 px-3 pull-left bg-secondary">{{$chat->message}}</span>  <br><br> 
                         @endif
                         @endforeach
-                        <chat v-for="value in chat.message" :key=value.index> 
+                        <chat v-for="value in chat.message" :key=value.index > 
                             @{{value}}
                         </chat>
                 </div>
@@ -38,8 +38,10 @@
         </div>
         </div>
     </div>
-    <h3 class="text-center"><i class="fa fa-write"></i> <a href="/prescription/{{$user->id}}" class="btn btn-info ">Write Priscription</a></h3>
-        <h3 class="text-center"><i class="fa fa-arrow-left"></i> <a href="{{ url('/chats') }}" class="text-dark">Go Back</a></h3>
+    @role('doctor')
+        <h3 class="text-center"><i class="fa fa-write"></i> <a href="/prescription/{{$user->id}}" class="btn btn-info ">Write Priscription</a></h3>
+     @endrole   
+    <h3 class="text-center"><i class="fa fa-arrow-left"></i> <a href="{{ url('/chats') }}" class="text-dark">Go Back</a></h3>
 </div>
 
 <script src="/js/app.js" charset="utf-8"></script>

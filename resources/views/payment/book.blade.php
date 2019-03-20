@@ -30,11 +30,7 @@
     <section class="container-lg">
       <!--Example 3-->
       <div class="cell example example3" id="example-3">
-        @if($fee == 100 || $fee == 899)
         <form method="post" action="{{url('addmoney/stripe/'.$fee)}}">
-        @else
-        <form method="post" action="{{url('payment/booking')}}">
-        @endif
           @csrf
           <div class="fieldset">
             <input id="example3-name" data-tid="elements_examples.form.name_label" class="field" type="text" placeholder="Card Holder Name" required="" autocomplete="name" name="name">

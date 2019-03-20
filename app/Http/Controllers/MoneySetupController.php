@@ -25,7 +25,12 @@ class MoneySetupController extends Controller
 			$fee=100;
 		else if($type == "yearly")
 			$fee=899;
-		 return view('payment.stripe',compact('fee'));
+		else{
+
+			$fee=$type;
+		
+		}
+		return view('payment.stripe',compact('fee'));
 		 
 	 }
 	public function postPaymentStripe(Request $request,$fee)
@@ -41,6 +46,22 @@ class MoneySetupController extends Controller
 
 		}
 		
+        return redirect('/client');
+        
+	 }
+
+	 public function bookingStripe($request)
+	 {
+		 $booking_fee = $request['con_fee'];
+		$date = $request['date'];
+		$time=$request['time'];
+		 return view('payment.book',compact('booking_fee','date','time'));
+		 
+	 }
+	public function postBookingStripe(Request $request,$fee)
+	 {
+			
+		// dd($client= Client::where('email',auth()->user()->email)->first());
         return redirect('/client');
         
 	 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use PDF;
 use auth;
+use App\User;
 use App\Client;
 use App\Doctor;
 use App\Booking;
@@ -104,7 +105,10 @@ class PrescriptionController extends Controller
      */
     public function show($id)
     {
-        $client = Client::findOrFail($id);
+        $user_email = User::findOrFail($id)->email;
+        // dd($user_id);
+        $client=Client::where('email',$user_email)->first();
+        // $client = Client::findOrFail($id);
         return view('prescription.show',compact('client'));
     }
 

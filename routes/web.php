@@ -76,7 +76,11 @@ Route::get('/payment', function () {
     return view('payment.chat');
 });
 
+
 Route::get('payment/stripe/{type}', array('as' => 'addmoney.paystripe','uses' => 'MoneySetupController@PaymentStripe'));
 
 Route::post('addmoney/stripe/{fee}', array('as' => 'addmoney.stripe','uses' => 'MoneySetupController@postPaymentStripe'));
+
+Route::post('payment/booking', array('as' => 'addmoney.stripe','uses' => 'MoneySetupController@postPaymentStripe'));
+
 

@@ -9,7 +9,9 @@
 
 <script>
     export default {
-        // props: ['chats','client_id', 'doctor_id'],
+        // props: [
+        //     'color'
+        // ],
         mounted() {
             console.log('Component mounted.')
         }

@@ -36,11 +36,10 @@
                               @endif  
                             @endif
                           @endforeach
-                        @else
+                          @endif
                         <h4 class="card-title">BOOK YOUR APPOINMENT</h4>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text">We make the Booking Simple for You.Just in 3 simple step you can book an APPOINMENT</p>
                         <a href="/doctors/all" class="btn btn-warning">Book Now</a>
-                        @endif
                       </div>
                     </div>
                  </div>

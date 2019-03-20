@@ -71,7 +71,10 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $user=Client::findOrFail($id);
+        $user_email = User::findOrFail($id)->email;
+        // dd($user_id);
+        $user=Client::where('email',$user_email)->first();
+        // dd($user->name);
         return view('clients.edit-profile',compact('user'));
     }
 

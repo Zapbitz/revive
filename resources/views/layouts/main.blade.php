@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="{{asset('images/fav.png')}}" type="image/x-icon">
     <meta name="client_id" content=" {{ Auth::check() ? Auth::user()->id : '' }} ">
     @yield('head')
     <!--     Fonts and icons     -->
@@ -21,6 +22,7 @@
 
       @include('inc.header')
     <div class="container-fluied">
+        @include('flash-msg')
         @yield('content')
     </div>
     @include('inc.footer')
