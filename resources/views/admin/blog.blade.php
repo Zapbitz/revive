@@ -39,8 +39,8 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/admin-panel/client">
-                  <i class="material-icons">H</i>
-                  <p>History Of Clients</p>
+                  <i class="material-icons">persons</i>
+                  <p>Clients</p>
                 </a>
               </li>
           <li class="nav-item ">

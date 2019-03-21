@@ -156,6 +156,7 @@ class PrescriptionController extends Controller
 
     public function history($id)
     {
+        // dd($id);
         $roleClient=Auth::user()->hasRole('client');
         $roleDoctor=Auth::user()->hasRole('doctor');
         if($roleClient)

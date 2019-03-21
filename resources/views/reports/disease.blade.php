@@ -14,7 +14,7 @@
                 <th>Disease Name</th>
                 <th>Client Name</th>
                 <th>Doctor Name</th>
-                <th>Medicine</th>
+                <th colspan="10">Medicine</th>
         </tr>
         </thead>
     
@@ -28,10 +28,10 @@
                 <td>{{ $disease->name }}</td>
                 <td>{{$disease->clientDetails->name}}</td>
                 <td>{{$disease->doctorDetails->name}}</td>
-                <td>
-                    @foreach ($disease->medicineDetails as $medicine )
-                        <p>{{$medicine->name}}</p>
-                    @endforeach
+                <td colspan="10">
+                @foreach ($disease->medicineDetails as $medicine )
+                        {{$medicine->medicine_name}},
+                @endforeach
                 </td>
             </tr>
         </tbody>

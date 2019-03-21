@@ -84,3 +84,4 @@ Route::post('addmoney/stripe/{fee}', array('as' => 'addmoney.stripe','uses' => '
 Route::post('payment/booking', array('as' => 'addmoney.stripe','uses' => 'MoneySetupController@postPaymentStripe'));
 
 
+Route::resource('privatejournal','PrivateJournalController');

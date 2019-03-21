@@ -19,6 +19,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/chats">Chat</a>
               </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/privatejournal">Private Journal</a>
+              </li>
               @endrole
               @role('client')
               <li class="nav-item">

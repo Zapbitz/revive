@@ -37,12 +37,12 @@
                   <p>Blog</p>
                 </a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/admin-panel/client">
-                  <i class="material-icons">H</i>
-                  <p>History Of Clients</p>
-                </a>
-              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/admin-panel/client">
+                    <i class="material-icons">persons</i>
+                    <p>Clients</p>
+                  </a>
+                </li>
           <li class="nav-item ">
             <a class="nav-link" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
@@ -69,8 +69,12 @@
                     <thead class="bg-info text-white">
                       <tr>
                         <th>Sl.No.</th>
-                        <th>Article Title</th>
-                        <th>Actions</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Occupation</th>
+                        <th>Age</th>
+                        {{-- <th>Disease</th>                         --}}
                       </tr>
                     </thead>
                     <tbody class="bg-white">
@@ -80,9 +84,11 @@
                                 <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{$client->name}}</td>                        
-                                <td>
-                                    <a href=""><i class="fa fa-eye"></i> <small>View History</small></a><br>  
-                                </td> 
+                                <td>{{$client->email}}</td>                        
+                                <td>{{$client->gender}}</td>                        
+                                <td>{{$client->occupation}}</td>                        
+                                <td>{{$client->age}}</td>                        
+                                {{-- <td>{{$client->gender}}</td>                                                         --}}
                                 </tr>  
                             @endforeach
                         @else

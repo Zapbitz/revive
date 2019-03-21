@@ -72,7 +72,7 @@
                               </div>
                               <div class="form-check form-check-radio form-check-inline ">
                                 <label class="form-check-label">
-                                  <input class="form-check-input" type="radio" name="gender" id="gender2" value="option2">  {{ __('Female') }}
+                                  <input class="form-check-input" type="radio" name="gender" id="gender2" value="female">  {{ __('Female') }}
                                   <span class="circle">
                                       <span class="check"> </span>
                                   </span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\User;
 use App\Client;
 use App\Doctor;
 use App\Booking;
@@ -40,6 +41,7 @@ class AdminController extends Controller
         $doctors = Doctor::all();
         $clients = Client::all();
         $diseases = Disease::all();
+        // dd($diseases[0]->medicineDetails);
         return view('admin.report',compact('doctors','clients','diseases'));
     }
     public function blog()
